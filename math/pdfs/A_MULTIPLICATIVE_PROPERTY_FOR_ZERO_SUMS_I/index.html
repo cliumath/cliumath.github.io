@@ -15,7 +15,7 @@ body{
   font-family: Helvetica Neue, Arial, Times New Roman;
   font-size: 1em;
 	font-weight: normal;
-  line-height: 2;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   margin:0px 0px 0px 0px;
 	/* padding: 0px; */
@@ -28,12 +28,21 @@ a:active { text-decoration: none;color: #06c}
 h1, h2, h3, h4, h5, h6 {
 	color:#1D1D1F;
 }
-table, th, td {
-  border: 1px solid #D6D6D6;
-  border-collapse: collapse;
+table {
+	border-collapse: collapse;
 }
-th, td {
-  background-color: #F5F5F7;
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 0.3em 1em;
+}
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
 }
 </style>
 <!-- Placeholder -->
@@ -86,8 +95,8 @@ xhReq.open("POST", "https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?&redir=" 
 </script>
 </HEAD>
 <BODY>
-<ul style="list-style-type: none;background-color: #313132;margin: 0;padding-left: 5%;padding-right: 9%;position:relative;">
-<li style="float: left;"><a style="display: block;color: #D6D6D6;text-align: center;padding: 0.6em 1.2em;text-decoration: none;"
+<ul style="list-style-type: none;background-color: #313132;margin: 0;padding-left: 2%;padding-right: 2%;position:relative;">
+<li style="float: left;"><a style="display: block;color: #D6D6D6;text-align: center;padding: 0.6em 1.2em 0.6em 0em;text-decoration: none;"
 onmouseover="this.style.color='white';this.style.background='black'"
 onmouseout="this.style.color='#D6D6D6';this.style.background='#313132'"
 href="https://chaol.org/">Home ></a></li>
@@ -100,7 +109,7 @@ onmouseover="this.style.color='white';this.style.background='black'"
 onmouseout="this.style.color='white';this.style.background='#313132'"
 href="https://chaol.org/research">Research ></a></li>
 </ul>
-<div style="margin-left: 5%;margin-right: 5%;">
+<div style="margin-left: 2%;margin-right: 2%;">
 
 
 <object data="./A_MULTIPLICATIVE_PROPERTY_FOR_ZERO_SUMS_I.pdf?#zoom=100&scrollbar=1&toolbar=1&navpanes=0" type="application/pdf" style="min-height:100vh;width:100%;">

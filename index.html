@@ -15,7 +15,7 @@ body{
   font-family: Helvetica Neue, Arial, Times New Roman;
   font-size: 1em;
 	font-weight: normal;
-  line-height: 2;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   margin:0px 0px 0px 0px;
 	/* padding: 0px; */
@@ -28,12 +28,21 @@ a:active { text-decoration: none;color: #06c}
 h1, h2, h3, h4, h5, h6 {
 	color:#1D1D1F;
 }
-table, th, td {
-  border: 1px solid #D6D6D6;
-  border-collapse: collapse;
+table {
+	border-collapse: collapse;
 }
-th, td {
-  background-color: #F5F5F7;
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 0.3em 1em;
+}
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
 }
 </style>
 <!-- Placeholder -->
@@ -87,11 +96,11 @@ xhReq.send(null);
 </script>
 </HEAD>
 <BODY>
-<ul style="list-style-type: none;background-color: #313132;margin: 0;padding-left: 5%;padding-right: 9%;position:relative;">
-<li style="float: left;"><a style="display: block;color: white;text-align: center;padding: 0.6em 1.2em;text-decoration: none;"
+<ul style="list-style-type: none;background-color: #313132;margin: 0;padding-left: 2%;padding-right: 2%;position:relative;">
+<li style="float: left;"><a style="display: block;color: white;text-align: center;padding: 0.6em 1.2em 0.6em 0em;text-decoration: none;"
 onmouseover="this.style.color='white';this.style.background='black'"
 onmouseout="this.style.color='white';this.style.background='#313132'"
-href="https://chaol.org/">Home ></a></li>
+href="https://chaol.org/">Home </a></li>
 <li style="float: left;"><a style="display: block;color: #D6D6D6;text-align: center;padding: 0.6em 1.2em;text-decoration: none;"
 onmouseover="this.style.color='white';this.style.background='black'"
 onmouseout="this.style.color='#D6D6D6';this.style.background='#313132'"
@@ -101,22 +110,22 @@ onmouseover="this.style.color='white';this.style.background='black'"
 onmouseout="this.style.color='#D6D6D6';this.style.background='#313132'"
 href="https://chaol.org/research">Research ></a></li>
 </ul>
-<div style="margin-left: 5%;margin-right: 5%;">
+<div style="margin-left: 2%;margin-right: 2%;">
 
-<h2 id="chao-liu">Chao Liu</h2>
+<h3 id="chao-liu"><strong>Chao Liu</strong></h3>
 
 <ul>
 <li>Ralph Faudree Assistant Professor, Department of Mathematical Sciences, University of Memphis</li>
-<li>Email: <a href="mailto:cliu7@memphis.edu" onclick="redir('mailto:cliu7@memphis.edu');">cliu7@memphis.edu</a> &nbsp; &nbsp; &nbsp; &nbsp;  <a href="mailto:chaoliuac@gmail.com"  onclick="redir('mailto:chaoliuac@gmail.com');">chaoliuac@gmail.com</a></li>
+<li>Email:   <a href="mailto:chaoliuac@gmail.com"  onclick="redir('mailto:chaoliuac@gmail.com');">chaoliuac@gmail.com</a></li>
 </ul>
 
 
 <h3> <a href="https://chaol.org/research" onclick="redir('https://chaol.org/research1');">Papers ></a></h3>
 
-<h3> <a href="https://chaol.org/teaching" onclick="redir('https://chaol.org/teaching1');">Teaching ></a></h3>
+<!-- <h3> <a href="https://chaol.org/teaching" onclick="redir('https://chaol.org/teaching1');">Teaching ></a></h3> -->
 
 </div><div style="flex-grow:1"></div><br>
-<footer style="margin-left: 5%;margin-right: 5%;padding:1em">
+<footer style="margin-left: 2%;margin-right: 2%;padding:0.6em 0em 0.6em 0em">
 <hr>2022 <a href="https://chaol.org">ChaoL.org</a>
 </footer>
 </BODY>
