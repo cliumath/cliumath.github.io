@@ -29,15 +29,6 @@
     
 }
 
-.content-wrapper {
-    max-width: 90%; /* Adjust the max-width to suit your design needs */
-    margin: 0 auto;   /* This centers the div while keeping top and bottom margins at 0 */
-    text-align: left; /* Keeps text left-aligned within the centered div */
-}
-
-.spacer {
-    flex-grow: 1;
-}
 
 body{
 	background-color:var(--background-color);
@@ -54,6 +45,47 @@ body{
     flex-direction: column;
 }
 
+.content-wrapper {
+    max-width: 95%; /* Adjust the max-width to suit your design needs */
+    margin: 0 auto;   /* This centers the div while keeping top and bottom margins at 0 */
+    text-align: left; /* Keeps text left-aligned within the centered div */
+    flex-grow: 1;
+}
+.transparent-text {
+    color: transparent;
+    color: transparent;
+    user-select: none;
+    pointer-events: none;
+}
+
+
+
+.footer {
+    max-width: 95%;
+     /* Match the max-width of your content wrapper or adjust as needed */
+    margin: 0 auto;  
+     /* This will center your footer */
+
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    text-align: center; /* This will left-align your text within the footer */
+    padding: 0.5em;     
+    /* Optional: Add some padding */
+}
+/* footer hr {
+    width: 100%; /* Make sure it takes up the full width of its container */
+    border: none; /* Remove any borders */
+    border-top: 1px solid #ccc; /* Add a top border */
+    color: #ccc; /* Add a fallback color */
+    height: 1px; /* Specify a height */
+    background-color: #ccc; /* Color the hr - use currentColor to use the color property */
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Remove any padding */
+} */
+
+.spacer {
+    flex-grow: 1;
+}
 a:link { text-decoration: none;color: #06c}
 a:visited { text-decoration: none;color: #06c}
 a:hover { text-decoration:underline;color: #06c}
@@ -114,18 +146,6 @@ table > tbody > tr + tr > td {
     color: white;
 }
 
-.footer {
-    max-width: 100%;
-     /* Match the max-width of your content wrapper or adjust as needed */
-    /* margin: 100 auto;   */
-     /* This will center your footer */
-
-    /* margin-left: 10%;
-    margin-right: 10%; */
-    text-align: center; /* This will left-align your text within the footer */
-    padding: 0.6em;     
-    /* Optional: Add some padding */
-}
 /* 
 footer {
     padding: 1em 0;
