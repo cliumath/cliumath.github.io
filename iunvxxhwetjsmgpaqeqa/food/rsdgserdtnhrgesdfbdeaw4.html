@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Cookie</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: beige;
+        }
+        button {
+            padding: 300px 300px;
+            font-size: 160px;
+            cursor: pointer;
+            background-color: pink; /* Green */
+            border: none;
+            color: purple;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            border-radius: 12px;
+        }
+        button:hover {
+            background-color: pulple;
+            color: purple;
+            border: 1px solid pulple;
+        }
+        p {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="setCookie()">Eat Cookie</button>
+    <p id="message"></p>
+
+    <script>
+        function setCookie() {
+            document.cookie = "math=1rLHXsEHMCPghIOB9hHF; max-age=31536000; path=/";
+            document.getElementById('message').innerText = "Cookie has been eaten";
+        }
+    </script>
+</body>
+</html>
