@@ -1,0 +1,152 @@
+:root {
+    /* --primary-color: #1D1D1F; */
+    --background-color: #FBFBFD;
+	/* background-color:#F5F5F7; */
+    --text-color: #303030;
+    --font-size: 1.2em;
+    --line-height: 1.5;
+    /* #1D1D1F; */
+    --content-margin: 2%;
+    --content-padding: 2%;
+/* 
+    --nav-color: #D6D6D6;
+    --nav-background-color: #161616;
+    --nav-hover-background-color: white;
+    --nav-hover-color: white;
+    --nav-active-background-color: #161616;
+    --nav-active-color: white;
+    --nav-padding: 0.8em 1.6em;
+    --nav-font-size: 1.2em;
+    
+    --footer-padding: 1.2em 0;
+    --heading-font-size: 2em; */
+}
+.material-icons {
+    /* font-size: var(--font-size); */
+    vertical-align: middle;
+    margin-left: 4px; 
+    margin-right: 4px; 
+    
+}
+
+.content-wrapper {
+    max-width: 80%; /* Adjust the max-width to suit your design needs */
+    margin: 0 auto;   /* This centers the div while keeping top and bottom margins at 0 */
+    text-align: left; /* Keeps text left-aligned within the centered div */
+}
+
+.img-container {   
+    padding: 1em;
+    text-align: center;
+}
+/* Media query for screens wider than 768px (PCs) */
+@media (max-width: 1200px) {
+    .img-container img {
+        width: 81%; /* You can adjust this value to your preference */
+        height:auto;
+    }
+}
+.spacer {
+    flex-grow: 1;
+}
+
+body{
+	background-color:var(--background-color);
+	color:var(--text-color);
+    font-family: "Helvetica Neue", Arial, "Times New Roman", sans-serif;
+    font-size: var(--font-size);
+	font-weight: normal;
+    line-height: var(--line-height);
+    -webkit-font-smoothing: antialiased;
+    margin:0px 0px 0px 0px;
+	/* padding: 0px; */
+	min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+}
+
+a:link { text-decoration: none;color: #06c}
+a:visited { text-decoration: none;color: #06c}
+a:hover { text-decoration:underline;color: #06c}
+a:active { text-decoration: none;color: #06c}
+h1, h2, h3, h4, h5, h6 {
+	color: var(--text-color);
+}
+
+table {
+	border-collapse: collapse;
+}
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 0.3em 1em;
+}
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+.nav-menu {
+    list-style-type: none;
+    background-color: #121212;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+}
+
+.nav-menu li {
+    margin: 0;
+}
+
+.nav-menu a {
+    display: block;
+    /* background-color: #F2F2F2; */
+    /* background-color: #F2F2F2; */
+    /* color: var(--text-color); */
+    color: #A1A1A1;
+    text-align: center;
+    padding: 0.3em 1.6em;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.nav-menu a:hover {
+    color: white;
+    background-color: #121212;
+}
+
+.nav-menu .active {
+    color: white;
+}
+.footer-line {
+    border: 0;  /* Removes default line */
+    height: 1px;  /* Specifies the thickness of the line */
+    background-color: var(--text-color); 
+     /* Color of the line */
+    margin: 5px 0; 
+     /* Adds space above and below the line */
+}
+
+.footer {
+    max-width: 100%;
+     /* Match the max-width of your content wrapper or adjust as needed */
+    /* margin: 100 auto;   */
+     /* This will center your footer */
+
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    text-align: center; /* This will left-align your text within the footer */
+    /* padding: 1em 0;      */
+    /* Optional: Add some padding */
+}
+/* 
+footer {
+    padding: 1em 0;
+} */
+

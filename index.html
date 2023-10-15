@@ -3,152 +3,56 @@
 <HEAD>
 <meta charset="utf-8">
 <TITLE>Chao Liu - Math</TITLE>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="Chao Liu, chaoliu, math, Davenport constant, Memphis, Ole Miss, Mississippi, Oxford, Combinatorics, Zero Sum,  homepage">
+<meta name="keywords" content="Chao Liu, math, chaoliu, Davenport constant, Memphis, Ole Miss, Zero Sum, Mississippi, Oxford, Number Theory, Combinatorics, homepage">
 <meta name="description" content="Chao Liu - Additive Number Theory and Extremal Combinatorics">
-<link rel="icon" href="https://chaol.org/favicon.ico" />
-<link rel="shortcut icon" href="https://chaol.org/favicon.ico" />
-<style>
-.material-icons {
-    font-size: 20px;
-    vertical-align: middle;
-    margin-right: 5px; /* add a little space between the icon and the text */
-}
-body{
-	background-color:#F5F5F7;
-	color:#1D1D1F;
-  font-family: Helvetica Neue, Arial, Times New Roman;
-  font-size: 1em;
-	font-weight: normal;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  margin:0px 0px 0px 0px;
-	/* padding: 0px; */
-	min-height: 100vh; display: flex; flex-direction: column;
-}
-a:link { text-decoration: none;color: #06c}
-a:visited { text-decoration: none;color: #06c}
-a:hover { text-decoration:underline;color: #06c;}
-a:active { text-decoration: none;color: #06c}
-h1, h2, h3, h4, h5, h6 {
-	color:#1D1D1F;
-}
-table {
-	border-collapse: collapse;
-}
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 0.3em 1em;
-}
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-</style>
+
+<meta property="og:title" content="Chao Liu - Math">
+<meta property="og:description" content="Chao Liu - Additive Number Theory and Extremal Combinatorics">
+<meta property="og:image" content="/v/pics/universe.png">
+<meta property="og:url" content="https://ChaoL.org">
+
+<link rel="icon" href="/v/pics/E.png" />
+<link rel="shortcut icon" href="/v/pics/E.png" />
 <!-- Placeholder -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script>
-function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() *
- charactersLength));
-   }
-   return result;
-}
-function getCookie(name) {
-    var dc = document.cookie;
-    var prefix = name + "=";
-    var begin = dc.indexOf("; " + prefix);
-    if (begin == -1) {
-        begin = dc.indexOf(prefix);
-        if (begin != 0) return null;
-    }
-    else
-    {
-        begin += 2;
-        var end = document.cookie.indexOf(";", begin);
-        if (end == -1) {
-        end = dc.length;
-        }
-    }
-    return decodeURI(dc.substring(begin + prefix.length, end));
-}
-var math0 = getCookie("math");
-if (math0 == null) {
-	math0=makeid(20);
-	document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
-}
-else {
-}
-var xhReq0 = new XMLHttpRequest();
-xhReq0.open("POST", "https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?&n=" + window.location.href + "&r=" + document.referrer + "&c=" + math0,true);
-xhReq0.send(null);
-</script>
-<script>
-function redir(url) {
-var xhReq = new XMLHttpRequest();
-var xhReq = new XMLHttpRequest();
-xhReq.open("POST", "https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?&redir=" + url + "&c=" + math0,true);
-xhReq.send(null);
-}
-</script>
+<script src="/v/js/layout.js" defer></script>
+<link rel="stylesheet" type="text/css" href="/v/css/layout.css">
 </HEAD>
 <BODY>
-<ul style="list-style-type: none;background-color: #313132;margin: 0;padding-left: 2%;padding-right: 2%;position:relative;">
-<li style="float: left;"><a style="display: block;color: white;text-align: center;padding: 0.6em 1.2em 0.6em 0em;text-decoration: none;"
-onmouseover="this.style.color='white';this.style.background='black'"
-onmouseout="this.style.color='white';this.style.background='#313132'"
-href="https://chaol.org/">Home </a></li>
-<li style="float: left;"><a style="display: block;color: #D6D6D6;text-align: center;padding: 0.6em 1.2em;text-decoration: none;"
-onmouseover="this.style.color='white';this.style.background='black'"
-onmouseout="this.style.color='#D6D6D6';this.style.background='#313132'"
-href="https://chaol.org/teaching">Teaching </a></li>
-<li style="float: left;"><a style="display: block;color: #D6D6D6;text-align: center;padding: 0.6em 1.2em;text-decoration: none;"
-onmouseover="this.style.color='white';this.style.background='black'"
-onmouseout="this.style.color='#D6D6D6';this.style.background='#313132'"
-href="https://chaol.org/research">Research </a></li>
+<ul class="nav-menu">
+    <li><a href="/"><i class="material-icons" aria-hidden="true">home</i><br>Home</a></li>
+    <li><a href="/research"><i class="material-icons" aria-hidden="true">insights</i><br>Research</a></li>
+    <li><a href="/teaching"><i class="material-icons" aria-hidden="true">group</i><br>Teaching</a></li>
 </ul>
-<div style="margin-left: 2%;margin-right: 2%;">
-    <h2 id="chao-liu"><strong>Chao Liu</strong></h2>
-    <p><i class="material-icons" aria-hidden="true">school</i> Visiting Assistant Professor</p>
-    <p><i class="material-icons" aria-hidden="true">location_city</i> Hume 333, Department of Mathematics, University of Mississippi, Oxford MS 38677</p>
-    
-    <p>
-        <i class="material-icons" aria-hidden="true">email</i> 
-        <a href="mailto:chaoliuac@gmail.com" onclick="redir('mailto:chaoliuac@gmail.com');" class="email-link">chaoliuac@gmail.com</a> &nbsp;/&nbsp; 
-        <a href="mailto:cliu3@olemiss.edu" onclick="redir('mailto:cliu3@olemiss.edu');" class="email-link">cliu3@olemiss.edu</a>
+<div class="content-wrapper">
+
+    <h2 id="chao-liu"><i class="material-icons" aria-hidden="true">sentiment_very_satisfied</i> Chao Liu</h2>
+    <p><i class="material-icons" aria-hidden="true">school</i> Visiting Assistant Professor, Department of Mathematics</p>
+    <p><i class="material-icons" aria-hidden="true">location_city</i> Hume 333, University of Mississippi, Oxford, MS 38677</p><hr>
+    <p class="section-link">
+        <i class="material-icons" aria-hidden="true">insights</i><a href="/research">
+            Research<i class="material-icons" aria-hidden="true">arrow_right</i></a>
+    </p>
+    <p class="section-link">
+        <i class="material-icons" aria-hidden="true">group</i><a href="/teaching">
+            Teaching<i class="material-icons" aria-hidden="true">arrow_right</i></a>
     </p>
     
-    <h3 class="section-link">
-        <a href="https://chaol.org/research" onclick="redir('https://chaol.org/research1');">
-            <i class="material-icons" aria-hidden="true">article</i>
-            Research
-            <i class="material-icons" aria-hidden="true">navigate_next</i>
-        </a>
-    </h3>
-    
-    <h3 class="section-link">
-        <a href="https://chaol.org/teaching" onclick="redir('https://chaol.org/teaching1');">
-            <i class="material-icons" aria-hidden="true">spa</i>
-            Teaching
-            <i class="material-icons" aria-hidden="true">navigate_next</i>
-        </a>
-    </h3>
-    
-    
-    
 
-</div><div style="flex-grow:1"></div><br>
-<footer style="margin-left: 2%;margin-right: 2%;padding:0.6em 0em 0.6em 0em">
-<hr>2023 <a href="https://chaol.org">ChaoL.org</a>
+    <hr>
+    <p><i class="material-icons" aria-hidden="true">send</i>
+        <a href="mailto:chaoliuac@gmail.com" class="email-link">chaoliuac@gmail.com</a>
+    </p>
+    <p><i class="material-icons" aria-hidden="true">send</i>
+        <a href="mailto:cliu3@olemiss.edu" class="email-link">cliu3@olemiss.edu</a>
+    </p>
+</div>
+<div style="flex-grow:1"></div>
+<!-- <div class="spacer"></div> -->
+<footer>
+    <hr><center><p>2023 <a href="/">ChaoL.org</a></p></center>
 </footer>
-</BODY>
-</HTML>
+</body>
+</html>

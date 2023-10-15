@@ -3,140 +3,55 @@
 <HEAD>
 <meta charset="utf-8">
 <TITLE>Chao Liu - Math</TITLE>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="Chao Liu, chaoliu, math, Davenport constant, Memphis, Ole Miss, Mississippi, Oxford, Combinatorics, Zero Sum,  homepage">
+<meta name="keywords" content="Chao Liu, math, chaoliu, Davenport constant, Memphis, Ole Miss, Zero Sum, Mississippi, Oxford, Number Theory, Combinatorics, homepage">
 <meta name="description" content="Chao Liu - Additive Number Theory and Extremal Combinatorics">
-<link rel="icon" href="https://chaol.org/favicon.ico" />
-<link rel="shortcut icon" href="https://chaol.org/favicon.ico" />
-<style>
-.material-icons {
-    font-size: 20px;
-    vertical-align: middle;
-    margin-right: 5px; /* add a little space between the icon and the text */
-}
-body{
-	background-color:#F5F5F7;
-	color:#1D1D1F;
-  font-family: Helvetica Neue, Arial, Times New Roman;
-  font-size: 1em;
-	font-weight: normal;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  margin:0px 0px 0px 0px;
-	/* padding: 0px; */
-	min-height: 100vh; display: flex; flex-direction: column;
-}
-a:link { text-decoration: none;color: #06c}
-a:visited { text-decoration: none;color: #06c}
-a:hover { text-decoration:underline;color: #06c;}
-a:active { text-decoration: none;color: #06c}
-h1, h2, h3, h4, h5, h6 {
-	color:#1D1D1F;
-}
-table {
-	border-collapse: collapse;
-}
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 0.3em 1em;
-}
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-</style>
+
+<meta property="og:title" content="Chao Liu - Math">
+<meta property="og:description" content="Chao Liu - Additive Number Theory and Extremal Combinatorics">
+<meta property="og:image" content="/v/pics/universe.png">
+<meta property="og:url" content="https://ChaoL.org">
+
+<link rel="icon" href="/v/pics/E.png" />
+<link rel="shortcut icon" href="/v/pics/E.png" />
 <!-- Placeholder -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script>
-function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() *
- charactersLength));
-   }
-   return result;
-}
-function getCookie(name) {
-    var dc = document.cookie;
-    var prefix = name + "=";
-    var begin = dc.indexOf("; " + prefix);
-    if (begin == -1) {
-        begin = dc.indexOf(prefix);
-        if (begin != 0) return null;
-    }
-    else
-    {
-        begin += 2;
-        var end = document.cookie.indexOf(";", begin);
-        if (end == -1) {
-        end = dc.length;
-        }
-    }
-    return decodeURI(dc.substring(begin + prefix.length, end));
-}
-var math0 = getCookie("math");
-if (math0 == null) {
-	math0=makeid(20);
-	document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
-}
-else {
-}
-var xhReq0 = new XMLHttpRequest();
-xhReq0.open("POST", "https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?&n=" + window.location.href + "&r=" + document.referrer + "&c=" + math0,true);
-xhReq0.send(null);
-</script>
-<script>
-function redir(url) {
-var xhReq = new XMLHttpRequest();
-var xhReq = new XMLHttpRequest();
-xhReq.open("POST", "https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?&redir=" + url + "&c=" + math0,true);
-xhReq.send(null);
-}
-</script>
+<script src="/v/js/layout.js" defer></script>
+<link rel="stylesheet" type="text/css" href="/v/css/layout.css">
 </HEAD>
 <BODY>
-<ul style="list-style-type: none;background-color: #313132;margin: 0;padding-left: 2%;padding-right: 2%;position:relative;">
-<li style="float: left;"><a style="display: block;color: #D6D6D6;text-align: center;padding: 0.6em 1.2em 0.6em 0em;text-decoration: none;"
-onmouseover="this.style.color='white';this.style.background='black'"
-onmouseout="this.style.color='#D6D6D6';this.style.background='#313132'"
-href="https://chaol.org/">Home </a></li>
-<li style="float: left;"><a style="display: block;color: white;text-align: center;padding: 0.6em 1.2em;text-decoration: none;"
-onmouseover="this.style.color='white';this.style.background='black'"
-onmouseout="this.style.color='white';this.style.background='#313132'"
-href="https://chaol.org/teaching">Teaching </a></li>
-<li style="float: left;"><a style="display: block;color: #D6D6D6;text-align: center;padding: 0.6em 1.2em;text-decoration: none;"
-onmouseover="this.style.color='white';this.style.background='black'"
-onmouseout="this.style.color='#D6D6D6';this.style.background='#313132'"
-href="https://chaol.org/research">Research </a></li>
+<ul class="nav-menu">
+    <li><a href="/"><i class="material-icons" aria-hidden="true">home</i><br>Home</a></li>
+    <li><a href="/research"><i class="material-icons" aria-hidden="true">insights</i><br>Research</a></li>
+    <li><a href="/teaching"><i class="material-icons" aria-hidden="true">group</i><br>Teaching</a></li>
 </ul>
-<div style="margin-left: 2%;margin-right: 2%;">
+<div class="content-wrapper">
 
-    <br><img src="calculus.jpg" style="width:64%;height:auto;">
-    <h3 id="teaching"><strong>Teaching</strong></h3>
+</div>
+<div class="img-container">
+    <img src="calculus.jpg"   style="width:66%;height:auto;">
+</div>
+<div class="content-wrapper">
+<h3 id="teaching"><strong>Teaching</strong></h3>
 <!-- <hr> -->
     <ul>
         <li>
             <p>Fall 2023 - Math 262-04 - Unified Calculus & Analytic Geometry II</p>
-            <p><i class="material-icons">book</i> <a href="https://blackboard.olemiss.edu" onclick="redir('https://blackboard.olemiss.edu');">Course Notes</a> | 
-            <i class="material-icons">assignment</i> <a href="https://mlm.pearson.com" onclick="redir('https://mlm.pearson.com1');">Homework</a></p>
+            <p><i class="material-icons">book</i> <a href="https://blackboard.olemiss.edu">Course Notes</a> | 
+            <i class="material-icons">assignment</i> <a href="https://mlm.pearson.com">Homework</a></p>
         </li>
         <li>
             <p>Fall 2023 - Math 262-05 - Unified Calculus & Analytic Geometry II</p>
-            <p><i class="material-icons">book</i> <a href="https://blackboard.olemiss.edu" onclick="redir('https://blackboard.olemiss.edu');">Course Notes</a> | 
-            <i class="material-icons">assignment</i> <a href="https://mlm.pearson.com" onclick="redir('https://mlm.pearson.com1');">Homework</a></p>
+            <p><i class="material-icons">book</i> <a href="https://blackboard.olemiss.edu">Course Notes</a> | 
+            <i class="material-icons">assignment</i> <a href="https://mlm.pearson.com">Homework</a></p>
         </li>
         <li>
             <p>Fall 2023 - Math 264-04 - Unified Calculus & Analytic Geometry IV</p>
-            <p><i class="material-icons">book</i> <a href="https://blackboard.olemiss.edu" onclick="redir('https://blackboard.olemiss.edu');">Course Notes</a> | 
-            <i class="material-icons">assignment</i> <a href="https://mlm.pearson.com" onclick="redir('https://mlm.pearson.com1');">Homework</a></p>
+            <p><i class="material-icons">book</i> <a href="https://blackboard.olemiss.edu">Course Notes</a> | 
+            <i class="material-icons">assignment</i> <a href="https://mlm.pearson.com">Homework</a></p>
         </li>
+        <hr>
         <li>
             <p>Summer 2023 - Math 263-01 - Unified Calculus & Analytic Geometry III</p>
         </li>
@@ -180,23 +95,33 @@ href="https://chaol.org/research">Research </a></li>
             <p>Fall 2017 - Elementary Number Theory</p>
         </li>
     </ul>
+    <hr>
     
 <h3 id="outreach"><strong>Outreach</strong></h3>
 <ul>
-<li><p><a href="https://math.olemiss.edu/pi-mu-epsilon" onclick="redir('https://math.olemiss.edu/pi-mu-epsilon');">Pi Mu Epsilon</a></p>
-</li>
-<li><p><a href="https://www.memphis.edu/msci/ugrad/cantor.php" onclick="redir('https://www.memphis.edu/msci/ugrad/cantor.php');">Cantor Sect</a></p>
-</li>
-<li><p><a href="https://www.memphis.edu/msci/research/ioc.php" onclick="redir('https://www.memphis.edu/msci/research/ioc.php');">Combinatorics Seminar</a></p>
-</li>
-<li><p><a href="https://www.memphis.edu/msci/grad/memphis_graduate_seminar.php" onclick="redir('https://www.memphis.edu/msci/grad/memphis_graduate_seminar.php');">Memphis Graduate Seminar</a></p>
-</li>
+    <li>
+        <p><a href="https://math.olemiss.edu/pi-mu-epsilon">Pi Mu Epsilon</a></p>
+    </li>
+    <li>
+        <p><a href="https://www.memphis.edu/msci/ugrad/cantor.php">Cantor Sect</a></p>
+    </li>
+    <li>
+        <p><a href="https://www.memphis.edu/msci/research/ioc.php">Combinatorics Seminar</a></p>
+    </li>
+    <li>
+        <p><a href="https://www.memphis.edu/msci/grad/memphis_graduate_seminar.php">Memphis Graduate Seminar</a></p>
+    </li>
 </ul>
 
 
-</div><div style="flex-grow:1"></div><br>
-<footer style="margin-left: 2%;margin-right: 2%;padding:0.6em 0em 0.6em 0em">
-<hr>2023 <a href="https://chaol.org">ChaoL.org</a>
+
+
+
+</div>
+<div style="flex-grow:1"></div>
+<!-- <div class="spacer"></div> -->
+<footer>
+    <hr><center><p>2023 <a href="/">ChaoL.org</a></p></center>
 </footer>
-</BODY>
-</HTML>
+</body>
+</html>
