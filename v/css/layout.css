@@ -30,22 +30,11 @@
 }
 
 .content-wrapper {
-    max-width: 80%; /* Adjust the max-width to suit your design needs */
+    max-width: 90%; /* Adjust the max-width to suit your design needs */
     margin: 0 auto;   /* This centers the div while keeping top and bottom margins at 0 */
     text-align: left; /* Keeps text left-aligned within the centered div */
 }
 
-.img-container {   
-    padding: 1em;
-    text-align: center;
-}
-/* Media query for screens wider than 768px (PCs) */
-@media (max-width: 1200px) {
-    .img-container img {
-        width: 81%; /* You can adjust this value to your preference */
-        height:auto;
-    }
-}
 .spacer {
     flex-grow: 1;
 }
@@ -150,3 +139,23 @@ footer {
     padding: 1em 0;
 } */
 
+
+.img-container {
+    /* padding: 1em; */
+    text-align: center;
+}
+
+.img-container img {
+    width: 100%; 
+    height: auto;
+    max-width: 800px; 
+    /* Adjust max-width as per your design needs */
+    margin: 0 auto;
+}
+
+/* Media Query */
+@media (min-width: 800px) {
+    .img-container img {
+        width: 64%; 
+    }
+}
