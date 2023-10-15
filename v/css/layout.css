@@ -113,14 +113,6 @@ table > tbody > tr + tr > td {
 .nav-menu .active {
     color: white;
 }
-.footer-line {
-    border: 0;  /* Removes default line */
-    height: 1px;  /* Specifies the thickness of the line */
-    background-color: var(--text-color); 
-     /* Color of the line */
-    margin: 5px 0; 
-     /* Adds space above and below the line */
-}
 
 .footer {
     max-width: 100%;
@@ -131,7 +123,7 @@ table > tbody > tr + tr > td {
     /* margin-left: 10%;
     margin-right: 10%; */
     text-align: center; /* This will left-align your text within the footer */
-    /* padding: 1em 0;      */
+    padding: 0.6em;     
     /* Optional: Add some padding */
 }
 /* 
