@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
 :root {
     /* --primary-color: #1D1D1F; */
     --background-color: #FBFBFD;
@@ -28,12 +30,17 @@
     margin-right: 4px; 
     
 }
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 body{
 	background-color:var(--background-color);
 	color:var(--text-color);
-    font-family: "Helvetica Neue", Arial, "Times New Roman", sans-serif;
+    font-family: Lora, "Helvetica Neue", "Times New Roman", Arial, sans-serif;
     font-size: var(--font-size);
 	font-weight: normal;
     line-height: var(--line-height);
