@@ -36,58 +36,7 @@
 </div>
 <div class="content-wrapper">
 
-<h3>Your Voice Matters</h3>
-<form id="messageForm">
-    <label for="message">Send a message to me:</label><br>
-    <textarea name="message" id="message" style="width: 100%; height: 4em;" placeholder="If you have thoughts, ideas, or questions, I'm here to listen and help." required></textarea><br>
-
-    <label for="name">Your name and email (optional): </label><br>
-    <textarea name="name" id="name" style="width: 100%; height: 2em;" placeholder="You're welcome to share your name and email so I can get back to you."></textarea><br>
-
-    <div style="display: flex; flex-direction: column; align-items: flex-end;">
-        <input type="submit" value="Send Message" class="button" id="submitButton">
-        <div id="responseMessage"></div>
-        <button type="button" id="resetButton" class="button" style="display: none;">Reset</button>
-    </div>
-</form>
-
-
-<script>
-document.getElementById("messageForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    // Display a processing message
-    document.getElementById("responseMessage").innerHTML = "Processing...";
-
-    const formData = new FormData(event.target);
-
-    fetch("https://cloud.chaol.org/bsn4293ygh5id5g3azk4wbfd.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("responseMessage").innerHTML = data.message;
-        if (data.status === 'success' && data.showReset) {
-            document.getElementById("resetButton").style.display = "block";
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        document.getElementById("responseMessage").innerHTML = "The server is under maintenance. Please try again later.";
-    });
-});
-
-document.getElementById("resetButton").addEventListener("click", function() {
-    document.getElementById("messageForm").reset();
-    // Hide the reset button after the form has been reset
-    document.getElementById("resetButton").style.display = "none";
-    // Clear the response message
-    document.getElementById("responseMessage").innerHTML = "";
-});
-
-</script>
-
+    
 
 
 
@@ -168,6 +117,56 @@ document.getElementById("resetButton").addEventListener("click", function() {
         </li>
     </ul>
     <!-- <hr> -->
+
+
+
+
+<h3>Your Voice Matters</h3>
+<form id="messageForm">
+    <label for="message">Send a message to me:</label><br>
+    <textarea name="message" id="message" style="width: 100%; height: 4em;" placeholder="If you have thoughts, ideas, or questions, I'm here to listen and help." required></textarea><br>
+    <label for="name">Your name and email (optional): </label><br>
+    <textarea name="name" id="name" style="width: 100%; height: 2em;" placeholder="You're welcome to share your name and email so I can get back to you."></textarea><br>
+    <div style="display: flex; flex-direction: column; align-items: flex-end;">
+        <input type="submit" value="Send Message" class="button" id="submitButton">
+        <div id="responseMessage"></div>
+        <button type="button" id="resetButton" class="button" style="display: none;">Reset</button>
+    </div>
+</form>
+<script>
+document.getElementById("messageForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Display a processing message
+    document.getElementById("responseMessage").innerHTML = "Processing...";
+
+    const formData = new FormData(event.target);
+
+    fetch("https://cloud.chaol.org/bsn4293ygh5id5g3azk4wbfd.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("responseMessage").innerHTML = data.message;
+        if (data.status === 'success' && data.showReset) {
+            document.getElementById("resetButton").style.display = "block";
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        document.getElementById("responseMessage").innerHTML = "The server is under maintenance. Please try again later.";
+    });
+});
+document.getElementById("resetButton").addEventListener("click", function() {
+    document.getElementById("messageForm").reset();
+    // Hide the reset button after the form has been reset
+    document.getElementById("resetButton").style.display = "none";
+    // Clear the response message
+    document.getElementById("responseMessage").innerHTML = "";
+});
+</script>
+
     
 <h3>Outreach</h3>
 <ul>
