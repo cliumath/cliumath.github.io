@@ -79,15 +79,17 @@ body hr {
 
 
 .footer {
-    max-width: 95%;
+    max-width: 100%;
      /* Match the max-width of your content wrapper or adjust as needed */
     margin: 0 auto;  
+
+    font-size: 0.7em;
      /* This will center your footer */
 
     /* margin-left: 10%;
     margin-right: 10%; */
     text-align: center; /* This will left-align your text within the footer */
-    padding: 0.5em;     
+    padding: 1.5em;     
     /* Optional: Add some padding */
 }
 
