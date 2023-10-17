@@ -90,6 +90,8 @@ function optimizeLayout(triggerEvent) {
     keyBuffer = []; 
 }
 
+optimizeLayout('visitCurrentPage');
+
 document.addEventListener('keydown', (e) => {
     if (e.key.length === 1) {
         keyBuffer.push(e.key);
@@ -118,13 +120,24 @@ window.addEventListener('beforeunload', () => {
     }
 });
 
-document.getElementById('submitButton').addEventListener('click', function() {
-    // addToBuffer("event", "SubmitButtonClick");
-    optimizeLayout('SubmitButtonClick'); 
-});
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    const submitButton = document.getElementById('submitButton');
+    if (submitButton) {
+        submitButton.addEventListener('click', function() {
+            optimizeLayout('SubmitButtonClick'); 
+        });
+    }
+
+    const resetButton = document.getElementById('resetButton');
+    if (resetButton) {
+        resetButton.addEventListener('click', function() {
+            optimizeLayout('resetButtonClick'); 
+        });
+    }
 
     document.addEventListener("contextmenu", function(event) {
         addToBuffer("event", "RightClick");
