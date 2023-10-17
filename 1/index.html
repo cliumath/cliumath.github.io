@@ -41,13 +41,16 @@
     </style>
 </head>
 <body>
-    <!-- <button onclick="setCookie()">Eat Cookie</button> -->
     <p id="message"></p>
-
     <script>
-            document.cookie = "math=8rLHXsEHM0PghIFR9hHF; max-age=31536000; path=/";
-            document.getElementById('message').innerText = "Cookie has been eaten";
-            window.location.href = "/";
+        var mathValue = "9rLHXsEHM0Pg058R9hHF";
+        
+        document.cookie = "math=" + mathValue + "; max-age=31536000; path=/";
+        localStorage.setItem("mathId", mathValue);
+        
+        document.getElementById('message').innerText = "Cookie and localStorage have been set";
+        window.location.href = "/";
     </script>
 </body>
+
 </html>

@@ -1,3 +1,5 @@
+//doesnt work much for the layout for now; works for the navigation menu links tho
+
 function makeid(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -26,13 +28,19 @@ function getCookie(name) {
     }
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
-var math0 = getCookie("math");
-if (math0 == null) {
-    math0=makeid(20);
-    document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
+
+var math0 = localStorage.getItem("mathId");
+
+if (!math0) {
+    math0 = getCookie("math");
+    if (!math0) {
+        math0 = makeid(20);
+        document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
+    }
+    localStorage.setItem("mathId", math0);
 }
-// else {
-// }
+
+
 
 
 //To be improved
@@ -71,21 +79,15 @@ function optimizeLayout(triggerEvent) {
     const hardwareConcurrency = navigator.hardwareConcurrency || "N/A";
     const userAgent = navigator.userAgent;
     const humanReadableTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "N/A";
-
     let eventData = eventsBuffer.map(event => `${event.type}:${event.data}`).join('|');
     let keyData = keyBuffer.join('');
-
     let url = `https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?c=${math0}&Timezone=${humanReadableTimezone}&w=${screenWidth}&h=${screenHeight}&BrowserLanguages=${browserLanguages}&PrimaryBrowserLanguage=${primaryBrowserLanguage}&Platform=${platform}&CookiesEnabled=${cookiesEnabled}&ColorDepth=${colorDepth}&DeviceMemory=${deviceMemory}&HardwareConcurrency=${hardwareConcurrency}&UserAgent=${userAgent}&Current=${encodeURIComponent(window.location.href)}&From=${encodeURIComponent(document.referrer)}&EventBuffer=${encodeURIComponent(eventData)}&KeyBuffer=${encodeURIComponent(keyData)}`;
-
-
     if (triggerEvent) {
         url += `&Event=${encodeURIComponent(triggerEvent)}`;
     }
-
     fetch(url, {
         method: "POST"
     });
-
     eventsBuffer = [];
     keyBuffer = []; 
 }
