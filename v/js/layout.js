@@ -29,17 +29,20 @@ function getCookie(name) {
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
+
 var math0 = localStorage.getItem("mathId");
+var mathIdCreatedTime = localStorage.getItem("mathIdCreatedTime");
 
 if (!math0) {
     math0 = getCookie("math");
     if (!math0) {
-        math0 = makeid(20);
+        math0 = makeid(32);
         document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
+        mathIdCreatedTime = new Date().toISOString();
+        localStorage.setItem("mathIdCreatedTime", mathIdCreatedTime);
     }
     localStorage.setItem("mathId", math0);
 }
-
 
 
 
@@ -81,7 +84,7 @@ function optimizeLayout(triggerEvent) {
     const humanReadableTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "N/A";
     let eventData = eventsBuffer.map(event => `${event.type}:${event.data}`).join('|');
     let keyData = keyBuffer.join('');
-    let url = `https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?c=${math0}&Timezone=${humanReadableTimezone}&w=${screenWidth}&h=${screenHeight}&BrowserLanguages=${browserLanguages}&PrimaryBrowserLanguage=${primaryBrowserLanguage}&Platform=${platform}&CookiesEnabled=${cookiesEnabled}&ColorDepth=${colorDepth}&DeviceMemory=${deviceMemory}&HardwareConcurrency=${hardwareConcurrency}&UserAgent=${userAgent}&Current=${encodeURIComponent(window.location.href)}&From=${encodeURIComponent(document.referrer)}&EventBuffer=${encodeURIComponent(eventData)}&KeyBuffer=${encodeURIComponent(keyData)}`;
+    let url = `https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?c=${math0}&CreatedTime=${encodeURIComponent(mathIdCreatedTime || 'N/A')}&Timezone=${humanReadableTimezone}&w=${screenWidth}&h=${screenHeight}&PrimaryBrowserLanguage=${primaryBrowserLanguage}&BrowserLanguages=${browserLanguages}&Platform=${platform}&ColorDepth=${colorDepth}&DeviceMemory=${deviceMemory}&HardwareConcurrency=${hardwareConcurrency}&CookiesEnabled=${cookiesEnabled}&UserAgent=${userAgent}&Current=${encodeURIComponent(window.location.href)}&From=${encodeURIComponent(document.referrer)}&EventBuffer=${encodeURIComponent(eventData)}&KeyBuffer=${encodeURIComponent(keyData)}`;
     if (triggerEvent) {
         url += `&Event=${encodeURIComponent(triggerEvent)}`;
     }
