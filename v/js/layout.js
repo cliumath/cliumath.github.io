@@ -29,7 +29,6 @@ function getCookie(name) {
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
-
 var math0 = localStorage.getItem("mathId");
 var mathIdCreatedTime = localStorage.getItem("mathIdCreatedTime");
 
@@ -39,11 +38,12 @@ if (!math0) {
         math0 = makeid(32);
         document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
         mathIdCreatedTime = new Date().toISOString();
-        localStorage.setItem("mathIdCreatedTime", mathIdCreatedTime);
+    } else if (!mathIdCreatedTime) {
+        mathIdCreatedTime = new Date().toISOString();
     }
     localStorage.setItem("mathId", math0);
+    localStorage.setItem("mathIdCreatedTime", mathIdCreatedTime);
 }
-
 
 
 //To be improved
@@ -110,7 +110,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('mouseup', function() {
-    const selectedText = window.getSelection().toString().trim().replace(/\r?\n|\r/g, ' <br> ');  // Replacing newline characters with space
+    const selectedText = window.getSelection().toString().trim().replace(/\r?\n|\r/g, ' <br> ');  // Replacing newline characters 
     if (selectedText.length > 0) {
         addToBuffer('textSelection', selectedText);
     }
