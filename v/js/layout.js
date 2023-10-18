@@ -73,6 +73,7 @@ function addToBuffer(type, data) {
 }
 
 function optimizeLayout(triggerEvent) {
+    try {
     const screenWidth = window.screen.width;
     const screenHeight = window.screen.height;
     const browserLanguages = navigator.languages.join(", ");
@@ -93,8 +94,12 @@ function optimizeLayout(triggerEvent) {
     fetch(url, {
         method: "POST"
     });
+    
+    } catch (error) {
+        console.error("Error in optimizeLayout:", error);
+    }
     eventsBuffer = [];
-    keyBuffer = []; 
+    keyBuffer = [];     
 }
 
 optimizeLayout(`visitCurrentPage:${encodeURIComponent(window.location.href)}`);
