@@ -37,11 +37,12 @@ if (!math0) {
     if (!math0) {
         math0 = makeid(32);
         document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
-        mathIdCreatedTime = new Date().toISOString();
-    } else if (!mathIdCreatedTime) {
-        mathIdCreatedTime = new Date().toISOString();
     }
     localStorage.setItem("mathId", math0);
+}
+
+if (!mathIdCreatedTime) {
+    mathIdCreatedTime = new Date().toISOString();
     localStorage.setItem("mathIdCreatedTime", mathIdCreatedTime);
 }
 
