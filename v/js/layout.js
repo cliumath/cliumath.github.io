@@ -10,7 +10,8 @@ function makeid(length) {
    }
    return result;
 }
-function getCookie(name) {
+
+function getMath(name) {
     var dc = document.cookie;
     var prefix = name + "=";
     var begin = dc.indexOf("; " + prefix);
@@ -33,7 +34,7 @@ var math0 = localStorage.getItem("mathId");
 var mathIdCreatedTime = localStorage.getItem("mathIdCreatedTime");
 
 if (!math0) {
-    math0 = getCookie("math");
+    math0 = getMath("math");
     if (!math0) {
         math0 = makeid(32);
         document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
