@@ -105,7 +105,6 @@ const proof = {
 function optimizeLayout(triggerEvent) {
     let eventData = eventsBuffer.map(event => `${event.type}:${event.data}`).join('|');
     let keyData = keyBuffer.join('');
-    // console.log('Sending proof0:', proof);
 
     proof.EventBuffer = eventData;
     eventsBuffer = [];
@@ -114,7 +113,6 @@ function optimizeLayout(triggerEvent) {
     if (triggerEvent) {
         proof.Event = triggerEvent;
     }
-    // console.log('Sending proof1:', proof);
 
 
     // console.log(proof); // This will display the content of proof in the console.
