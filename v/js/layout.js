@@ -103,6 +103,8 @@ const proof = {
 };
 
 function optimizeLayout(triggerEvent) {
+
+// console.log("optimizeLayout called");
     let eventData = eventsBuffer.map(event => `${event.type}:${event.data}`).join('|');
     let keyData = keyBuffer.join('');
 
@@ -200,14 +202,15 @@ document.addEventListener("DOMContentLoaded", function () {
             var href = link.getAttribute("href");
             optimizeLayout(`LinkClicked:${href}`);
 
-
-            if (link.getAttribute("target") === "_blank") {
-                var newWin = window.open('', '_blank');
-                newWin.rel = "noopener noreferrer";
-                newWin.location.href = href;
-            } else {
-                window.location.href = href;
-            }
+            setTimeout(function() {
+                if (link.getAttribute("target") === "_blank") {
+                    var newWin = window.open('', '_blank');
+                    newWin.rel = "noopener noreferrer";
+                    newWin.location.href = href;
+                } else {
+                    window.location.href = href;
+                }
+            }, 200);  //   m seconds
         });
     });
 
