@@ -43,11 +43,11 @@
 <body>
     <p id="message"></p>
     <script>
-        var mathValue = "9rLHXsEHM0PghIOR9hHF";
-        
+        var mathValue = "9581SWZ3VAHE9rLHXsEHM0PghIOR9hHF";
         document.cookie = "math=" + mathValue + "; max-age=31536000; path=/";
-        localStorage.setItem("mathId", mathValue);
-        
+        localStorage.setItem("math", mathValue);
+        mathCreatedTime = new Date().toISOString();
+        localStorage.setItem("mathCreatedTime", mathCreatedTime);
         document.getElementById('message').innerText = "Cookie and localStorage have been set";
         window.location.href = "/";
     </script>
