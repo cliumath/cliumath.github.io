@@ -159,7 +159,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key.length === 1) {
         keyBuffer.push(e.key);
     } else {
-        keyBuffer.push(`<<<${e.key}>>>`);
+        keyBuffer.push(`<${e.key}>`);
     }
 
     // if (keyBuffer.length >= 12) {
