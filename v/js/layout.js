@@ -28,7 +28,16 @@ function getMath(name) {
     }
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
+function formatDateToUTC(date) {
+    const formattedDate = date.toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
 
+    return formattedDate;
+}
+
+if (!mathCreatedTime) {
+    mathCreatedTime = formatDateToUTC(new Date());
+    localStorage.setItem("mathCreatedTime", mathCreatedTime);
+}
 var math = localStorage.getItem("math");  // Changed from mathId to math
 var mathCreatedTime = localStorage.getItem("mathCreatedTime");
 
@@ -42,7 +51,7 @@ if (!math) {
 }
 
 if (!mathCreatedTime) {
-    mathCreatedTime = new Date().toISOString();
+    mathCreatedTime = formatDateToUTC(new Date());
     localStorage.setItem("mathCreatedTime", mathCreatedTime);
 }
 
@@ -83,8 +92,8 @@ const userAgent = navigator.userAgent;
 const humanReadableTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "N/A";
 
 const proof = {
-    c: math,
-    cTimeUTC: mathCreatedTime || 'N/A',
+    math,
+    mathTime: mathCreatedTime || 'N/A',
     TimezoneNow: humanReadableTimezone,
     w: screenWidth,
     h: screenHeight,
