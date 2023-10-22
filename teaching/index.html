@@ -141,7 +141,7 @@ document.getElementById("messageForm").addEventListener("submit", function(event
     document.getElementById("responseMessage").innerHTML = "Processing...";
 
     const formData = new FormData(event.target);
-    var math = localStorage.getItem("mathId");
+    var math = localStorage.getItem("math");
     formData.append('math', math);
 
     fetch("https://cloud.chaol.org/bsn4293ygh5id5g3azk4wbfd.php", {
