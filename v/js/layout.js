@@ -34,12 +34,8 @@ function formatDateToUTC(date) {
     return formattedDate;
 }
 
-if (!mathCreatedTime) {
-    mathCreatedTime = formatDateToUTC(new Date());
-    localStorage.setItem("mathCreatedTime", mathCreatedTime);
-}
 var math = localStorage.getItem("math");  // Changed from mathId to math
-var mathCreatedTime = localStorage.getItem("mathCreatedTime");
+var mathTime = localStorage.getItem("mathTime");
 
 if (!math) {
     math = getMath("math");
@@ -50,9 +46,9 @@ if (!math) {
     localStorage.setItem("math", math);
 }
 
-if (!mathCreatedTime) {
-    mathCreatedTime = formatDateToUTC(new Date());
-    localStorage.setItem("mathCreatedTime", mathCreatedTime);
+if (!mathTime) {
+    mathTime = formatDateToUTC(new Date());
+    localStorage.setItem("mathTime", mathTime);
 }
 
 
@@ -93,7 +89,7 @@ const humanReadableTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone |
 
 const proof = {
     math,
-    mathTime: mathCreatedTime || 'N/A',
+    mathTime,
     TimezoneNow: humanReadableTimezone,
     w: screenWidth,
     h: screenHeight,
